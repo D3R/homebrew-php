@@ -8,7 +8,7 @@ def postgres_installed?
   `which pg_config`.length > 0
 end
 
-class Php < Formula
+class Php53 < Formula
   homepage 'http://php.net'
   url 'http://www.php.net/get/php-5.3.13.tar.bz2/from/this/mirror'
   md5 '370be99c5cdc2e756c82c44d774933c8'
@@ -300,25 +300,25 @@ You may also need to edit the plist to use the correct "UserName".
 end
 
 __END__
-diff -Naur php-5.3.2/ext/tidy/tidy.c php/ext/tidy/tidy.c 
+diff -Naur php-5.3.2/ext/tidy/tidy.c php/ext/tidy/tidy.c
 --- php-5.3.2/ext/tidy/tidy.c	2010-02-12 04:36:40.000000000 +1100
 +++ php/ext/tidy/tidy.c	2010-05-23 19:49:47.000000000 +1000
 @@ -22,6 +22,8 @@
  #include "config.h"
  #endif
- 
+
 +#include "tidy.h"
 +
  #include "php.h"
  #include "php_tidy.h"
- 
+
 @@ -31,7 +33,6 @@
  #include "ext/standard/info.h"
  #include "safe_mode.h"
- 
+
 -#include "tidy.h"
  #include "buffio.h"
- 
+
  /* compatibility with older versions of libtidy */
 diff --git a/Makefile.global b/Makefile.global
 index 8dad0e4..f6d460b 100644
@@ -326,9 +326,9 @@ index 8dad0e4..f6d460b 100644
 +++ b/Makefile.global
 @@ -18,7 +18,7 @@ libphp$(PHP_MAJOR_VERSION).la: $(PHP_GLOBAL_OBJS) $(PHP_SAPI_OBJS)
  	-@$(LIBTOOL) --silent --mode=install cp $@ $(phptempdir)/$@ >/dev/null 2>&1
- 
+
  libs/libphp$(PHP_MAJOR_VERSION).bundle: $(PHP_GLOBAL_OBJS) $(PHP_SAPI_OBJS)
 -	$(CC) $(MH_BUNDLE_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) $(EXTRA_LDFLAGS) $(PHP_GLOBAL_OBJS:.lo=.o) $(PHP_SAPI_OBJS:.lo=.o) $(PHP_FRAMEWORKS) $(EXTRA_LIBS) $(ZEND_EXTRA_LIBS) -o $@ && cp $@ libs/libphp$(PHP_MAJOR_VERSION).so
 +	$(CC) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) $(EXTRA_LDFLAGS) $(MH_BUNDLE_FLAGS) $(PHP_GLOBAL_OBJS:.lo=.o) $(PHP_SAPI_OBJS:.lo=.o) $(PHP_FRAMEWORKS) $(EXTRA_LIBS) $(ZEND_EXTRA_LIBS) -o $@ && cp $@ libs/libphp$(PHP_MAJOR_VERSION).so
- 
+
  install: $(all_targets) $(install_targets)

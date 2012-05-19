@@ -1,6 +1,6 @@
 require 'formula'
 
-class RedisPhp < Formula
+class Php53Redis < Formula
   homepage 'https://github.com/nicolasff/phpredis'
   url 'https://github.com/nicolasff/phpredis/tarball/2.2.0'
   md5 '9a89b0aeae1906bcfdc8a80d14d62405'
@@ -27,7 +27,7 @@ class RedisPhp < Formula
   end
 
   def caveats; <<-EOS.undent
-    To finish installing redis-php:
+    To finish installing php53-redis:
       * Add the following line to #{etc}/php.ini:
         extension="#{prefix}/redis.so"
       * Restart your webserver.
