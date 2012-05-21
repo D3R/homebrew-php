@@ -7,6 +7,7 @@ class RedisPhp < Formula
   head 'https://github.com/nicolasff/phpredis.git'
 
   depends_on 'autoconf' => :build
+  depends_on 'redis'
 
   fails_with :clang do
     build 318
